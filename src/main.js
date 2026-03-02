@@ -60,16 +60,24 @@ const initScrollReveal = () => {
     observer.observe(item);
   });
 
+  let didRevealAllAtBottom = false;
+
   const showAllAtBottom = () => {
+    if (didRevealAllAtBottom) return;
+
     const nearBottom =
       window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
 
     if (!nearBottom) return;
 
+    didRevealAllAtBottom = true;
+
     targets.forEach((item) => {
       item.classList.add("is-visible");
       item.classList.remove("leave-top");
     });
+
+    window.removeEventListener("scroll", showAllAtBottom);
   };
 
   window.addEventListener("scroll", showAllAtBottom, { passive: true });

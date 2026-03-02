@@ -37,7 +37,7 @@ body::after {
   border-radius: 999px;
   pointer-events: none;
   z-index: 0;
-  filter: blur(72px) saturate(130%);
+  filter: blur(52px) saturate(120%);
 }
 
 body::before {
@@ -109,7 +109,6 @@ body.layout {
   transition:
     opacity 0.42s ease,
     transform 0.5s cubic-bezier(0.2, 0.65, 0.2, 1);
-  will-change: opacity, transform;
 }
 
 .reveal-on-scroll.leave-top {
@@ -185,6 +184,13 @@ a {
   padding-left: var(--section-indent-left);
 }
 
+.projects-item,
+.exp-item,
+.education-item {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 340px;
+}
+
 /* Slightly brighter muted text for readability */
 .timing,
 .job-description,
@@ -211,9 +217,7 @@ a {
 
   body::before,
   body::after {
-    width: 78vmax;
-    height: 78vmax;
-    filter: blur(64px) saturate(120%);
+    display: none;
   }
 
   body.layout {
@@ -281,6 +285,11 @@ a {
     min-height: 100dvh;
   }
 
+  body::before,
+  body::after {
+    display: none;
+  }
+
   body {
     font-size: 15px;
   }
@@ -327,6 +336,19 @@ a {
   .looking {
     font-size: 11px;
     line-height: 1.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
+
+  .reveal-on-scroll {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }
 
