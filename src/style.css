@@ -31,9 +31,28 @@ body.layout {
   align-items: stretch;
   gap: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   width: min(1280px, 100%);
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.42s ease,
+    transform 0.5s cubic-bezier(0.2, 0.65, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.leave-top {
+  transform: translate3d(0, -18px, 0);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 ul {
@@ -87,6 +106,7 @@ a {
 @media (min-width: 320px) and (max-width: 767px) {
   body.layout {
     flex-direction: column;
+    min-height: 100dvh;
   }
 
   body {
@@ -141,6 +161,7 @@ a {
 @media (min-width: 768px) and (max-width: 900px) {
   body.layout {
     flex-direction: column;
+    min-height: 100dvh;
   }
 
   body {
@@ -189,5 +210,15 @@ a {
   .looking {
     font-size: 11px;
     line-height: 1.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-on-scroll.leave-top,
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

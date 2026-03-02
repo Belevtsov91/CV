@@ -1,3 +1,5 @@
+const STORAGE_KEY = "skillsAccordionState";
+
 const getToggleContent = (toggleButton) => {
   const card = toggleButton.closest(".design-front-set, .development-set");
   if (!card) return null;
@@ -13,40 +15,75 @@ const getToggleContent = (toggleButton) => {
   return null;
 };
 
-const setInitialCollapsedState = () => {
+const readAccordionState = () => {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    return {
+      design: Boolean(parsed.design),
+      development: Boolean(parsed.development),
+    };
+  } catch {
+    return {
+      design: false,
+      development: false,
+    };
+  }
+};
+
+const saveAccordionState = (state) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // ignore storage errors
+  }
+};
+
+const getCurrentAccordionState = () => {
   const designList = document.querySelector(".skills .design-list");
   const developmentGrid = document.querySelector(".skills .development-grid");
-  const toggleButtons = document.querySelectorAll(".skills .set-skills-toggle");
+
+  return {
+    design: Boolean(designList && !designList.classList.contains("is-collapsed")),
+    development: Boolean(
+      developmentGrid && !developmentGrid.classList.contains("is-collapsed"),
+    ),
+  };
+};
+
+const applyAccordionState = (state) => {
+  const designList = document.querySelector(".skills .design-list");
+  const developmentGrid = document.querySelector(".skills .development-grid");
+  const designButton = document.querySelector(
+    ".skills .design-front-set .set-skills-toggle",
+  );
+  const developmentButton = document.querySelector(
+    ".skills .development-set .set-skills-toggle",
+  );
 
   if (designList) {
-    designList.classList.add("is-collapsed");
+    designList.classList.toggle("is-collapsed", !state.design);
   }
 
   if (developmentGrid) {
-    developmentGrid.classList.add("is-collapsed");
+    developmentGrid.classList.toggle("is-collapsed", !state.development);
   }
 
-  toggleButtons.forEach((button) => {
-    button.setAttribute("aria-expanded", "false");
-  });
+  if (designButton) {
+    designButton.setAttribute("aria-expanded", String(state.design));
+  }
+
+  if (developmentButton) {
+    developmentButton.setAttribute("aria-expanded", String(state.development));
+  }
+};
+
+const setInitialCollapsedState = () => {
+  applyAccordionState(readAccordionState());
 };
 
 const closeAllSkillsAccordions = () => {
-  const designList = document.querySelector(".skills .design-list");
-  const developmentGrid = document.querySelector(".skills .development-grid");
-  const toggleButtons = document.querySelectorAll(".skills .set-skills-toggle");
-
-  if (designList) {
-    designList.classList.add("is-collapsed");
-  }
-
-  if (developmentGrid) {
-    developmentGrid.classList.add("is-collapsed");
-  }
-
-  toggleButtons.forEach((button) => {
-    button.setAttribute("aria-expanded", "false");
-  });
+  applyAccordionState({ design: false, development: false });
+  saveAccordionState({ design: false, development: false });
 };
 
 document.addEventListener("click", (event) => {
@@ -70,6 +107,8 @@ document.addEventListener("click", (event) => {
     "aria-expanded",
     String(!content.classList.contains("is-collapsed")),
   );
+
+  saveAccordionState(getCurrentAccordionState());
 });
 
 if (document.readyState === "loading") {
