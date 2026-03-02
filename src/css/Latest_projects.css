@@ -29,7 +29,7 @@
   font-size: 14px;
   line-height: 125%;
   color: var(--gray-lightest);
-  min-height: 36px;
+  min-height: 40px;
 }
 
 .project-name a {
@@ -50,6 +50,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  min-height: 46px;
 }
 
 .project-description:hover {
@@ -84,6 +85,14 @@
   padding: 12px;
   width: 240px;
   border-radius: 30px;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.projects-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
 }
 
 img.project-frame {

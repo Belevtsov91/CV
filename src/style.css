@@ -7,6 +7,11 @@
 @import url("../src/css/Skills.css");
 @import url("../src/css/Contact-form.css");
 
+:root {
+  --section-indent-left: 32px;
+  --section-indent-right: 24px;
+}
+
 *,
 *::before,
 *::after {
@@ -18,6 +23,47 @@ body {
   font-size: 14px;
   color: #434455;
   background-color: var(--gray-darkest);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(72px) saturate(130%);
+}
+
+body::before {
+  top: -24vmax;
+  left: -18vmax;
+  background: radial-gradient(
+    circle,
+    rgba(146, 81, 247, 0.5) 0%,
+    rgba(81, 108, 247, 0.34) 40%,
+    rgba(36, 195, 241, 0.14) 65%,
+    transparent 75%
+  );
+  animation: glow-orb-1 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  right: -22vmax;
+  bottom: -26vmax;
+  background: radial-gradient(
+    circle,
+    rgba(198, 150, 252, 0.42) 0%,
+    rgba(81, 108, 247, 0.32) 42%,
+    rgba(34, 195, 241, 0.13) 66%,
+    transparent 76%
+  );
+  animation: glow-orb-2 22s ease-in-out infinite alternate;
 }
 
 html,
@@ -35,6 +81,26 @@ body.layout {
   width: min(1280px, 100%);
   max-width: 1280px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes glow-orb-1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8vmax, 5vmax, 0) scale(1.1);
+  }
+}
+
+@keyframes glow-orb-2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-9vmax, -6vmax, 0) scale(1.12);
+  }
 }
 
 .reveal-on-scroll {
@@ -98,12 +164,58 @@ a {
   padding: 32px 24px;
 }
 
+/* Unified section rhythm */
+.exp-list {
+  padding-left: var(--section-indent-left);
+  padding-right: var(--section-indent-right);
+}
+
+.projects-list,
+.education-list,
+.contact-socials {
+  margin-left: var(--section-indent-left);
+}
+
+.set-skills,
+.contact-socials {
+  padding-right: var(--section-indent-right);
+}
+
+.set-skills {
+  padding-left: var(--section-indent-left);
+}
+
+/* Slightly brighter muted text for readability */
+.timing,
+.job-description,
+.item-info,
+.socials-label,
+.language-level,
+.education-year,
+.project-description,
+.looking,
+.development-subtitle {
+  color: var(--gray-lighter);
+}
+
 .sidebar {
   /* flex: 0 0 320px; */
   min-width: 220px;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+  :root {
+    --section-indent-left: 24px;
+    --section-indent-right: 12px;
+  }
+
+  body::before,
+  body::after {
+    width: 78vmax;
+    height: 78vmax;
+    filter: blur(64px) saturate(120%);
+  }
+
   body.layout {
     flex-direction: column;
     min-height: 100dvh;
@@ -159,6 +271,11 @@ a {
 }
 
 @media (min-width: 768px) and (max-width: 900px) {
+  :root {
+    --section-indent-left: 28px;
+    --section-indent-right: 16px;
+  }
+
   body.layout {
     flex-direction: column;
     min-height: 100dvh;
@@ -214,6 +331,11 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
+
   .reveal-on-scroll,
   .reveal-on-scroll.leave-top,
   .reveal-on-scroll.is-visible {
