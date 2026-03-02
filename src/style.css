@@ -1,0 +1,85 @@
+@import "normalize.css";
+@import url("../src/css/variabels.css");
+@import url("../src/css/aside.css");
+@import url("../src/css/Experience.css");
+@import url("../src/css/Latest_projects.css");
+@import url("../src/css/Education.css");
+@import url("../src/css/Skills.css");
+@import url("../src/css/Contact-form.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #434455;
+  background-color: var(--gray-darkest);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body.layout {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-height: 100vh;
+  width: min(1280px, 100%);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-content {
+  background-color: var(--gray-darkest);
+  /* border-left: 1px solid var(--gray-darker); */
+  padding: 32px 24px;
+}
+
+.sidebar {
+  /* flex: 0 0 320px; */
+  min-width: 220px;
+}
