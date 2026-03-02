@@ -7,19 +7,16 @@ import "./js/Contact-form.js";
 const initScrollReveal = () => {
   const targets = document.querySelectorAll(
     [
-      ".sidebar .title",
-      ".sidebar .sub-title",
-      ".sidebar .looking",
-      ".sidebar .contacts-item",
-      ".sidebar .socials-item",
-      ".sidebar .languages-item",
-      ".main-content h2",
-      ".main-content h3",
-      ".main-content h4",
-      ".main-content p",
-      ".main-content li",
-      ".main-content a",
-      ".main-content span",
+      ".sidebar-logo",
+      ".contacts",
+      ".socials",
+      ".languages",
+      ".exp-item",
+      ".projects-item",
+      ".education-item",
+      ".design-front-set",
+      ".development-set",
+      ".contact-social-link",
     ].join(", "),
   );
 
@@ -49,11 +46,8 @@ const initScrollReveal = () => {
         if (entry.isIntersecting) {
           element.classList.add("is-visible");
           element.classList.remove("leave-top");
-          return;
+          observer.unobserve(element);
         }
-
-        element.classList.remove("is-visible");
-        element.classList.toggle("leave-top", entry.boundingClientRect.top < 0);
       });
     },
     {

@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "swiper": "^12.1.0",
     "vite-plugin-full-reload": "^1.2.0"
   }
 }
