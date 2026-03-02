@@ -50,11 +50,13 @@
   margin-top: 8px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 24px;
   width: 100%;
   margin-left: 32px;
 }
 .education-item {
+  flex: 1 1 260px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -84,4 +86,29 @@
 .first-img {
   background-color: white;
   width: 150px;
+}
+
+@media (max-width: 700px) {
+  .education-list {
+    margin-left: 24px;
+    gap: 16px;
+  }
+
+  .education-item {
+    flex: 1 1 100%;
+    gap: 12px;
+  }
+
+  .educ-name {
+    gap: 10px;
+  }
+
+  .educ-img {
+    width: 76px;
+    height: 76px;
+  }
+
+  .first-img {
+    width: 96px;
+  }
 }

@@ -1,8 +1,8 @@
-.expirience {
+.experience {
   position: relative;
   margin-bottom: 10px;
 }
-.expirience::before {
+.experience::before {
   content: "";
   position: absolute;
   left: 8px;

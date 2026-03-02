@@ -7,8 +7,12 @@ document.addEventListener("click", (event) => {
   event.preventDefault();
 
   const appUrl = link.getAttribute("href");
-  const fallbackUrl =
-    link.getAttribute("data-fallback") || VIBER_DEFAULT_FALLBACK;
+  const fallbackUrl = link.getAttribute("data-fallback") || VIBER_DEFAULT_FALLBACK;
+
+  if (!appUrl) {
+    window.location.href = fallbackUrl;
+    return;
+  }
 
   let appOpened = false;
 
@@ -24,9 +28,17 @@ document.addEventListener("click", (event) => {
 
   window.location.href = appUrl;
 
-  window.setTimeout(() => {
+  const timerId = window.setTimeout(() => {
     if (!appOpened) {
       window.location.href = fallbackUrl;
     }
   }, 1200);
+
+  window.addEventListener(
+    "pagehide",
+    () => {
+      window.clearTimeout(timerId);
+    },
+    { once: true },
+  );
 });

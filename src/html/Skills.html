@@ -23,10 +23,17 @@
     <div class="design-front-set">
       <div class="design-cont">
         <svg class="design-svg" aria-hidden="true"></svg>
-        <h3 class="set-skills-title">Design</h3>
+        <button
+          class="set-skills-title set-skills-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="skills-design-list"
+        >
+          Design
+        </button>
       </div>
 
-      <ul class="design-list">
+      <ul class="design-list" id="skills-design-list">
         <li class="design-item">UI/UX Fundamentals</li>
         <li class="design-item">Wireframing</li>
         <li class="design-item">Prototyping (Figma)</li>
@@ -39,10 +46,17 @@
     <div class="development-set">
       <div class="development-cont">
         <svg class="development-svg" aria-hidden="true"></svg>
-        <h3 class="set-skills-title">Development</h3>
+        <button
+          class="set-skills-title set-skills-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="skills-development-grid"
+        >
+          Development
+        </button>
       </div>
 
-      <div class="development-grid">
+      <div class="development-grid" id="skills-development-grid">
         <!-- Frontend -->
         <div class="development-column">
           <h4 class="development-subtitle">Frontend</h4>
@@ -67,33 +81,17 @@
             <li class="development-tools-item">Express</li>
             <li class="development-tools-item">MongoDB (Mongoose)</li>
             <li class="development-tools-item">REST API Development</li>
-            <li class="development-tools-item">
-              Authentication (JWT + Cookies)
-            </li>
-            <li class="development-tools-item">
-              Sessions & Refresh Token Flow
-            </li>
-            <li class="development-tools-item">
-              Authorization & Protected Routes
-            </li>
-            <li class="development-tools-item">
-              Validation (Joi) & Error Handling
-            </li>
-            <li class="development-tools-item">
-              Pagination, Sorting & Filtering
-            </li>
-            <li class="development-tools-item">
-              Password Reset (Email Token Flow)
-            </li>
+            <li class="development-tools-item">Authentication (JWT + Cookies)</li>
+            <li class="development-tools-item">Sessions & Refresh Token Flow</li>
+            <li class="development-tools-item">Authorization & Protected Routes</li>
+            <li class="development-tools-item">Validation (Joi) & Error Handling</li>
+            <li class="development-tools-item">Pagination, Sorting & Filtering</li>
+            <li class="development-tools-item">Password Reset (Email Token Flow)</li>
             <li class="development-tools-item">
               Email Sending (Brevo SMTP / Nodemailer)
             </li>
-            <li class="development-tools-item">
-              File Upload (Multer) + Cloudinary
-            </li>
-            <li class="development-tools-item">
-              Swagger / OpenAPI Documentation
-            </li>
+            <li class="development-tools-item">File Upload (Multer) + Cloudinary</li>
+            <li class="development-tools-item">Swagger / OpenAPI Documentation</li>
             <li class="development-tools-item">Git / GitHub</li>
             <li class="development-tools-item">Docker (Basic)</li>
             <li class="development-tools-item">Postman</li>

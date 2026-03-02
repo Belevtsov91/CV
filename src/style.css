@@ -1,5 +1,5 @@
 @import "normalize.css";
-@import url("../src/css/variabels.css");
+@import url("../src/css/variables.css");
 @import url("../src/css/aside.css");
 @import url("../src/css/Experience.css");
 @import url("../src/css/Latest_projects.css");
@@ -82,4 +82,112 @@ a {
 .sidebar {
   /* flex: 0 0 320px; */
   min-width: 220px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  body.layout {
+    flex-direction: column;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .sidebar {
+    min-width: 100%;
+  }
+
+  .main-content {
+    padding: 24px 12px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .sub-title,
+  .exp-title,
+  .lt-pr-title,
+  .edu-title,
+  .skills-title,
+  .contact-title {
+    font-size: 17px;
+    line-height: 1.35;
+  }
+
+  .project-name,
+  .education-degree,
+  .job-title,
+  .set-skills-title,
+  .contacts-link,
+  .socials-link,
+  .language-name {
+    font-size: 13px;
+  }
+
+  .project-description,
+  .job-description,
+  .timing,
+  .item-info,
+  .socials-label,
+  .language-level,
+  .education-year,
+  .looking {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  body.layout {
+    flex-direction: column;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .sidebar {
+    min-width: 100%;
+  }
+
+  .main-content {
+    padding: 28px 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .sub-title,
+  .exp-title,
+  .lt-pr-title,
+  .edu-title,
+  .skills-title,
+  .contact-title {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .project-name,
+  .education-degree,
+  .job-title,
+  .set-skills-title,
+  .contacts-link,
+  .socials-link,
+  .language-name {
+    font-size: 13px;
+  }
+
+  .project-description,
+  .job-description,
+  .timing,
+  .item-info,
+  .socials-label,
+  .language-level,
+  .education-year,
+  .looking {
+    font-size: 11px;
+    line-height: 1.4;
+  }
 }
